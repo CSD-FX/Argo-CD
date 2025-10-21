@@ -19,7 +19,7 @@ argocd-expose:
 	bash scripts/expose_argocd.sh
 
 kube-info:
-	kubectl version --short && kubectl get nodes -o wide && kubectl get pods -A
+	kubectl version && kubectl get nodes -o wide && kubectl get pods -A
 
 app-apply:
 	kubectl apply -k k8s/app
