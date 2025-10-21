@@ -47,6 +47,10 @@ git push origin main
 ---
 
 ## 2) Install K3s on EC2 and prepare
+```bash
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install make -y
+```
 
 ```bash
 sudo make k3s-install
