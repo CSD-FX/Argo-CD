@@ -1,4 +1,4 @@
-# Day 2 – ArgoCD Auto-Deploy (K3s on EC2)
+# ArgoCD Auto-Deploy (K3s on EC2)
 
 An end-to-end, commit-driven deployment demo:
 
@@ -28,18 +28,21 @@ An end-to-end, commit-driven deployment demo:
 
 ---
 
-## 1) Push this project to GitHub
+## 1) Clone & Push this project to Your New GitHub Repo
+
+```bash
+git clone https://github.com/CSD-FX/ArgoCD-K3S-GitOPS.git
+cd ArgoCD-K3S-GitOPS
+```
+
+Edit `k8s/argocd/app.yaml` and set `spec.source.repoURL` to your repo URL.
 
 ```bash
 git init
 git add .
-git commit -m "day2: argocd auto-deploy"
-git branch -M main
-git remote add origin https://github.com/<YOUR_USER>/<YOUR_REPO>.git
-git push -u origin main
+git commit -m ""
+git push origin main
 ```
-
-Edit `k8s/argocd/app.yaml` and set `spec.source.repoURL` to your repo URL.
 
 ---
 
