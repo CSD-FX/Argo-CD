@@ -8,6 +8,11 @@ An end-to-end, commit-driven deployment demo:
 
 ---
 
+![ArgoCD UI](https://raw.githubusercontent.com/CSD-FX/ArgoCD-K3S-GitOPS/main/images/argocd-ui.png)
+![Initial Index](https://raw.githubusercontent.com/CSD-FX/ArgoCD-K3S-GitOPS/main/images/initial-index.png)
+![Updated Index](https://raw.githubusercontent.com/CSD-FX/ArgoCD-K3S-GitOPS/main/images/updated-index.png)
+![Cluster Info](https://raw.githubusercontent.com/CSD-FX/ArgoCD-K3S-GitOPS/main/images/info.png)
+
 ## Prerequisites
 
 - EC2 Ubuntu 24.04+ instance
