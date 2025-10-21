@@ -84,7 +84,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 ---
 
-## 4) Register the repo (if private)
+## 4) Register the repo
 
 - ArgoCD UI → Settings → Repositories → CONNECT → **VIA HTTP/HTTPS**
 - Repository URL: `https://github.com/<YOUR_USER>/<YOUR_REPO>.git`
