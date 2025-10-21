@@ -58,6 +58,13 @@ make kube-info
 make addons-fix   # repoints CoreDNS/metrics-server/local-path-provisioner to stable registries
 kubectl -n kube-system get pods
 ```
+If local-path-provisioner fails
+```bash
+kubectl -n kube-system set image deploy/local-path-provisioner \
+  local-path-provisioner=docker.io/rancher/local-path-provisioner:v0.0.31
+kubectl -n kube-system rollout status deploy/local-path-provisioner --timeout=10s
+make kube-info
+```
 
 ---
 
