@@ -10,7 +10,7 @@ An end-to-end, commit-driven deployment demo:
 
 ## Prerequisites
 
-- EC2 Ubuntu 22.04+ instance
+- EC2 Ubuntu 24.04+ instance
 - Security Group inbound:
   - `22/tcp` (SSH)
   - `30090-30091/tcp` (ArgoCD UI)
@@ -88,6 +88,8 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 - ArgoCD UI → Settings → Repositories → CONNECT → **VIA HTTP/HTTPS**
 - Repository URL: `https://github.com/<YOUR_USER>/<YOUR_REPO>.git`
+- Connect
+   - Don't add any name or project name (Not necessary)
 - For private repos: Username = your GitHub user, Password = GitHub PAT with `repo` scope.
 
 ---
