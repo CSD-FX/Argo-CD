@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/REPLACE_WITH_YOUR_GITHUB_USERNAME/REPLACE_WITH_YOUR_REPO.git
+    repoURL: https://github.com/CSD-FX/Argo-CD.git
     targetRevision: HEAD
     path: k8s/app
   destination:
