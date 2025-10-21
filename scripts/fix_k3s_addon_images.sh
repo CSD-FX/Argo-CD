@@ -19,6 +19,16 @@ get_img() { kubectl -n "$ns" get deploy "$1" -o jsonpath='{.spec.template.spec.c
 
 cur=$(get_img coredns); if [[ -n "$cur" ]]; then tag=${cur##*:}; [[ "$tag" != v* ]] && tag="v$tag"; patch_image coredns coredns "registry.k8s.io/coredns/coredns:${tag}"; fi
 cur=$(get_img metrics-server); if [[ -n "$cur" ]]; then tag=${cur##*:}; [[ "$tag" != v* ]] && tag="v$tag"; patch_image metrics-server metrics-server "registry.k8s.io/metrics-server/metrics-server:${tag}"; fi
-cur=$(get_img local-path-provisioner); [[ -z "$cur" ]] && cur="rancher/local-path-provisioner:v0.0.31"; tag=${cur##*:}; patch_image local-path-provisioner local-path-provisioner "ghcr.io/rancher/local-path-provisioner:${tag}"
+cur=$(get_img local-path-provisioner); [[ -z "$cur" ]] && cur="rancher/local-path-provisioner:v0.0.31"; tag=${cur##*:}
+
+# Try GHCR, then Docker Hub, then AWS Public ECR
+echo "Attempting local-path-provisioner image with fallbacks (ghcr -> dockerhub -> aws ecr)"
+if ! patch_image local-path-provisioner local-path-provisioner "ghcr.io/rancher/local-path-provisioner:${tag}"; then
+  echo "GHCR attempt failed; trying Docker Hub..."
+  if ! patch_image local-path-provisioner local-path-provisioner "docker.io/rancher/local-path-provisioner:${tag}"; then
+    echo "Docker Hub attempt failed; trying AWS Public ECR..."
+    patch_image local-path-provisioner local-path-provisioner "public.ecr.aws/rancher/local-path-provisioner:${tag}" || true
+  fi
+fi
 
 kubectl -n kube-system get pods -o wide
